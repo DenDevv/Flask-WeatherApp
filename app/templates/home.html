@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Погода в Україні
+{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            background-image: url("{{ data['sky'][1] }}"); 
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .block__content {
+            background-color: rgba{{ data['sky'][2] }};
+        }
+
+        .today__tbody {
+            background-color: rgba{{ data['sky'][3] }};
+        }
+    </style>
+
+    <div class="wrapper">
+        
+        <div class="auth">
+            {% if current_user.is_authenticated %}
+                <a href="/profile">Профіль</a>
+                <a href="/logout">Вийти</a>
+            {% else %}
+                <a href="/login">Увійти</a>
+                <a href="/register">Реєстрація</a>
+            {% endif %}
+        </div>
+
+        <div class="block__search">
+            <form method="POST" action="/">
+                {{ form.search_field(id="search_field") }}
+
+                {% if save_status and current_user.is_authenticated %}
+                    <button id="data" 
+                        data-url="{{ data['url'] }}" 
+                        data-name="{{ save_name }}">Зберегти
+                    </button>
+                {% endif %}
+                
+                {{ form.search_btn(id="search_btn") }}
+                {{ form.csrf_token }}
+            </form>
+        </div>
+
+        <div class="block__content">
+            <div class="block__info">
+                <ul>
+                    <li><h3 id="weekday">{{ data['weekday'] }}</h3></li>
+                    <li>
+                        <h1>
+                            Погода {{data['title'].split("сьогодні")[0]}} на сьогодні о
+                            {{data['title'].split(" ")[-1]}}
+                        </h1>
+                    </li>
+                    <li><h2>{{ data['region'] }}</h2></li>
+                    <li id="f-c">
+                        <h1 id="temp">{{ data['temp'] }}</h1>
+                        <span id="feels-like">
+                            <span class="ff"><span>Відчувається як</span> <b>{{ data['feel_t'] }}C</b></span>
+                            <span id="feel-e">{{data['feel_e']}}</span>
+                        </span>
+                        <h3 id="sky">{{ data['sky'][0] }}</h3>
+
+                        <table class="today__atmosphere">
+                            <tbody class="today__tbody">
+                                <tr>
+                                    <th>Опади</th>
+                                    <td class="atmosphere-spec">
+                                        <b>{{ data['fall_out'].split("%")[0] }}</b> %
+                                    </td>
+                                </tr>
+                                <tr>
+                                <th>Вологість</th>
+                                <td class="atmosphere-spec">
+                                    <b>{{ data['hudimity'].split("%")[0] }}</b> %
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Мін.</th>
+                                <td class="atmosphere-spec">
+                                    <b>{{ data['min_max'].split(" ")[1].split("°")[0] }}</b>°
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Макс.</th>
+                                <td class="atmosphere-spec">
+                                    <b>{{ data['min_max'].split(" ")[3].split("°")[0] }}</b>°
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li><div id="desc">{{ data['desc'] }}</div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="flash">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="{{ category }}">
+                    <b>{{message}}</b>
+                </div>
+            {% endfor %}
+        {% endwith %}
+    </div>
+{% endblock %}

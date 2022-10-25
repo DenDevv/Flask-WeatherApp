@@ -1,0 +1,7 @@
+Flask
+Flask-WTF
+Flask-Login
+Flask-SQLAlchemy
+beautifulsoup4
+requests
+fake_useragent

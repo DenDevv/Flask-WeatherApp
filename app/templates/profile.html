@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Мій профіль
+{% endblock %}
+
+{% block body %}
+  <style>
+    body {
+        background-image: url("{{ data['sky'][1] }}"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .block__other__settings, .block__profile {
+        background-color: rgba{{ data['sky'][2] }};
+    }
+  </style>
+
+    <div class="profile__wrapper">
+        <div class="auth">
+            <a href="/">Головна</a>
+            <a href="/logout">Вийти</a>
+        </div>
+
+        <div class="block__profile"> 
+            <div class="block__info">
+              <h2>Ваш профіль</h2>
+                <ul>
+                    <li>Ваш логін: {{ user.user_login }}</li>
+                    <li>Ви з нами з {{ user.user_date }}</li>
+                    {% if w_data %}
+                    <li>Ваші збережені місця:</li>
+                      <table class="saved__places__table">
+                          {% for data in w_data %}
+                          <tr>
+                              <td>
+                                <li class="saved__place saved__places__td">
+                                  <a href="/check/{{ data['w_uuid'] }}">{{ data['name'] }}</a>
+                                </li>
+                              </td>
+                              <td>
+                                <span class="s_info saved__places__td">{{ data['s_info'] }}</span>
+                              </td>
+                              <td>
+                                <a class="remove saved__places__td" href="/remove/{{ data['w_uuid'] }}">
+                                  <span id="boot-icon" class="bi bi-trash"></span>
+                                </a>
+                              </td>
+                          </tr>
+                          {% endfor %}
+                      </table>
+                    {% endif %}
+                </ul>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block__other__settings">
+      <u><h3 align="center">Інші налаштування</h3></u>
+      <div class="block__details one">
+        <div class="block__details__item">
+          <div class="block__details__title">
+            <u>Видалити аккаунт</u> ⚠️
+          </div>
+          <div class="block__details__text">
+            <section id="delete__section">
+              <div id="block__delete__info">
+                <h4>Видалення аккаунту.</h4>
+                <p>
+                  На цьому етапі дійте свідомо. Адже видалення аккаунту призведе
+                  до стирання всіх ваших даних назавжди без можливості відновлення!
+                </p>
+                <button id="delete__account__btn">Видалити аккаунт</button>
+              </div>
+              <dialog id="delete__dialog" class="dialog">
+                <header class="dialog__header">
+                  <h1>УВАГА! ⚠️</h1>
+                </header>
+                <div class="dialog__content">
+                  <p>
+                    Ви дійсно хочете видалити свій аккаунт? Це незворотня дія. 
+                    Будь ласка введіть свій токен (<u><code>{{ user_token }}</code></u>)
+                    для підтвердження ваших дій.
+                  </p>
+                </div>
+                <button class="btn__cancel" id="cancel">Скасувати</button>
+                <form method="POST" action="/delete_account" id="delete__form">
+                  {{ form.token_field }}
+                  {{ form.confirm }}
+                  {{ form.csrf_token }}
+                </form>
+              </dialog>
+            </section>
+          </div>
+      </div>
+    </div>
+
+    <div class="flash">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+          {% for category, message in messages %}
+              <div class="{{ category }}">
+                  <b>{{message}}</b>
+              </div>
+          {% endfor %}
+      {% endwith %}
+  </div>
+{% endblock %}

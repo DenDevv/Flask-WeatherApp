@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Вхід
+{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            background-image: url("{{ data['sky'][1] }}"); 
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .block__content, .block__auth {
+            background-color: rgba{{ data['sky'][2] }};
+        }
+    </style>
+
+    <div class="wrapper">
+        <div class="auth">
+            <a href="/">Головна</a>
+            <a href="/register">Реєстрація</a>
+        </div>
+
+        <div class="block__auth">
+            <h1>Авторизація</h1>
+            <form method="POST" action>
+                <div class="block__info">
+                    <ul>
+                        <div class="auth__fields">
+                            <li>{{ form.login(class="auth__field") }}</li>
+                            <li>{{ form.password(class="auth__field") }}</li>
+                        </div>
+                        <div class="auth__btns">
+                            <li>
+                                {{ form.sign_in(class="auth__btn") }}
+                                {{ form.remember.label }}
+                                {{ form.remember }}
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+                {{ form.csrf_token }}
+            </form>
+        </div>
+    </div>
+
+    <div class="flash">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="{{ category }}">
+                    <b>{{message}}</b>
+                </div>
+            {% endfor %}
+        {% endwith %}
+    </div>
+{% endblock %}

@@ -1,0 +1,87 @@
+.block__auth {
+    margin-top: 100px;
+    margin-left: 100px;
+    width: 510px;
+    padding: 20px;
+    border-radius: 7px;
+    font-size: 18px;
+    user-select: none;
+    -webkit-box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.38);
+    -moz-box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.38);
+    box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.38);
+}
+
+.block__auth .auth__btn {
+    height: 35px;
+    width: 90px;
+}
+
+.block__auth .auth__field {
+    height: 35px;
+    width: 350px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(237, 237, 237);
+    transition: 0.3s ease-in-out;
+    padding-left: 5px;
+    margin-top: 20px;
+}
+
+.block__auth .auth__field::placeholder {
+    transition: 0.3s ease-in-out;
+}
+
+.block__auth .auth__field:focus::placeholder {
+    color: white;
+}
+
+.block__auth .auth__field:focus {
+    color: white;
+    background-color: rgb(112, 112, 112);
+}
+
+.block__auth .auth__btn {
+    height: 35px;
+    width: 100px;
+    font-size: 15px;
+    margin-top: 20px;
+    background-color: rgb(191, 126, 252);
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+
+.block__auth .auth__btn:hover,
+.block__auth .reg__btn:hover {
+    background-color: rgb(170, 90, 245);
+}
+
+.auth__fields,
+.block__auth h1 {
+    color: #fff;
+    text-align: center;
+}
+
+.block__auth .auth__btns {
+    margin-left: 77px;
+}
+
+.auth__btns label {
+    margin-left: 130px;
+    color: #fff;
+}
+
+.reg__btn {
+    height: 35px;
+    width: 120px;
+    margin-top: 20px;
+    background-color: rgb(191, 126, 252);
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    color: white;
+    transition: 0.3s ease-in-out;
+}

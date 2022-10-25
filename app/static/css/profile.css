@@ -1,0 +1,246 @@
+.profile__wrapper {
+    margin-top: 100px;
+    margin-left: 480px;
+}
+
+.block__profile {
+    margin-top: 30px;
+    margin-right: 900px;
+    width: 510px;
+    padding: 20px;
+    border-radius: 7px;
+    font-size: 18px;
+}
+
+.block__profile h2 {
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+}
+
+.block__info li {
+    color: #fff;
+}
+
+.saved__places__table {
+    margin-top: 10px;
+}
+
+.s_info {
+    user-select: none;
+    width: 100px;
+    margin-left: 5px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgb(167, 167, 167);
+    color: white;
+    padding: 7px;
+}
+
+.remove {
+    background: none;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+.bi-trash {
+    font-size: 23px;
+    color: rgb(206, 35, 35);
+    margin-left: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.bi-trash:hover {
+    color: rgb(241, 58, 58);
+}
+
+.block__other {
+    margin-bottom: 100px;
+}
+
+.block__other__settings {
+    color: #fff;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 480px;
+    width: 525px;
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 15px;
+}
+
+.block__details__title {
+    user-select: none;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.block__details__title:before,
+.block__details__title:after {
+    content: '';
+    width: 10px;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    top: 8px;
+    margin-left: 5px;
+    margin-top: 72px;
+    transition: all 0.3s ease 0s;
+}
+
+.block__details__title:before {
+    transform: rotate(40deg);
+    left: 0;
+}
+
+.block__details__title:after {
+    transform: rotate(-40deg);
+    left: 8px;
+}
+
+.block__details__title.active:before,
+.block__details__title.active:after {
+    background-color: red;
+}
+
+.block__details__title.active:before {
+    transform: rotate(-40deg);
+}
+
+.block__details__title.active:after {
+    transform: rotate(40deg);
+}
+
+.block__details__text {
+    display: none;
+    padding-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 20px;
+    color: rgb(0, 0, 0);
+}
+
+#block__delete__info {
+    border: 2px rgb(206, 4, 4) dashed;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    font-size: 15px;
+    background-color: rgb(255, 209, 209);
+}
+
+#block__delete__info h4 {
+    color: rgb(190, 4, 4);
+}
+
+#block__delete__info p {
+    color: rgb(202, 45, 45);
+}
+
+#delete__account__btn {
+    padding: 10px;
+    background-color: rgb(234, 4, 4);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s ease-in-out;
+}
+
+#delete__account__btn:hover {
+    background-color: rgb(200, 33, 33);
+}
+
+.dialog {
+    width: 700px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.dialog__content code {
+    background-color: rgb(237, 237, 237);
+    color: rgb(81, 81, 81);
+    font-size: 16px;
+}
+
+#cancel {
+    position: relative;
+    padding: 8px;
+    background-color: rgb(2, 172, 2);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 395px;
+    top: 32px;
+    transition: 0.3s ease-in-out;
+}
+
+#cancel:hover {
+    background-color: rgb(18, 145, 18);
+}
+
+#confirm__delete__btn {
+    padding: 8px;
+    background-color: rgb(234, 4, 4);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s ease-in-out;
+}
+
+#confirm__delete__btn:hover {
+    background-color: rgb(176, 19, 19);
+}
+
+#user__token {
+    height: 30px;
+    width: 300px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(237, 237, 237);
+    transition: 0.3s ease-in-out;
+    margin-bottom: 25px;
+}
+
+#user__token::placeholder {
+    transition: 0.3s ease-in-out;
+}
+
+#user__token:focus::placeholder {
+    color: white;
+}
+
+#user__token:focus {
+    color: white;
+    background-color: rgb(112, 112, 112);
+}
+
+.saved__place {
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 5px;
+    background-color: rgb(167, 167, 167);
+    height: 30px;
+    transition: 0.3s ease-in-out;
+}
+
+.saved__place:first-child:hover {
+    background-color: rgb(136, 135, 135);
+}
+
+.saved__place a {
+    user-select: none;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: white;
+    text-decoration: none;
+}
