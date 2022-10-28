@@ -18,7 +18,6 @@ def home():
     if sf.validate_on_submit():
         search_data = sf.search_field.data
         data = search_weather(search_data)
-        print(data['sky'])
     else:
         search_data = "Київ"
         data = search_weather("Київ")
@@ -65,7 +64,6 @@ def check(w_uuid):
 
     if data and data.user_id==current_user.id:
         data = search_weather(search_url=data.save_url)
-        print(data)
 
     return render_template("check_saved.html", data=data, save_name=None)
 

@@ -7,7 +7,7 @@ class SearchForm(FlaskForm):
     search_field = SearchField(
         label=None,
         validators=[DataRequired()],
-        render_kw={"placeholder": "Знайти погоду..."}
+        render_kw={"placeholder": "Оберіть місто..."}
     )
 
     search_btn = SubmitField(
