@@ -95,14 +95,15 @@ def parser(content, url):
     fall_out = table_elements[1] + " %" if table_elements[1] != "-" else "0%"
 
     description = soup.find("div", class_="wDescription").find("div", class_="description").text
+    temp = int(today_temp.split("\u00b0")[0])
 
-    if int(today_temp[1:-2]) <= 5:
+    if temp <= 5:
         feel_emoji = 'Дуже прохолодно'
-    elif int(today_temp[1:-2]) > 5 and int(today_temp[1:-2]) <= 15:
+    if temp > 5 and temp <= 15:
         feel_emoji = 'Прохолодно'
-    elif int(today_temp[1:-2]) > 15 and int(today_temp[1:-2]) <= 27:
+    if temp > 15 and temp <= 27:
         feel_emoji = 'Тепло'
-    elif int(today_temp[1:-2]) > 27:
+    if temp > 27:
         feel_emoji = 'Гаряче'
 
     return {
