@@ -1,7 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
+
 from app import ua
 from app.views.params import SkyParams
+from app.views.exceptions import UnknownSkyClassError
 
 
 def search_weather(message=None, search_url=None):
@@ -88,7 +90,10 @@ def parser(content, url):
     sky_class = soup.find("tr", class_="weatherIcoS").find("td", class_="cur").find("div", class_="weatherIco").get("class")[1]
     sky_title = soup.find("tr", class_="weatherIcoS").find("td", class_="cur").find("div", class_="weatherIco").get("title")
     sky_desc = sky_params.get(sky_class)
-    print(sky_class)
+
+    if not sky_desc:
+        raise UnknownSkyClassError(f'Unknown sky_class: {sky_class}')
+    
 
     table = soup.find("tbody").findAll("tr", class_="")
     table_elements = [tr.find("td", class_="cur").text for tr in table]
